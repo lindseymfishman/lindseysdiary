@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Diary Blog</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #fdf6e3;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      margin: 20px;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background: #eee;
+      border-bottom: 2px solid #ccc;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      margin: 0 2px;
+      background: #f9f9f9;
+      transition: background 0.3s;
+    }
+    .tab:hover {
+      background: #ddd;
+    }
+    .tab-content {
+      display: none;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      border: 1px solid #ccc;
+      border-top: none;
+      text-align: left;
+    }
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>📖 My Diary</h1>
+  
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab" onclick="openTab(0, 'flip1')">Entry 1</div>
+    <div class="tab" onclick="openTab(1, 'flip2')">Entry 2</div>
+    <div class="tab" onclick="openTab(2, 'flip3')">Entry 3</div>
+  </div>
+  
+  <!-- Content -->
+  <div class="tab-content active">
+    <h2>Entry 1</h2>
+    <p>Dear Diary… today I started building my website!</p>
+  </div>
+  
+  <div class="tab-content">
+    <h2>Entry 2</h2>
+    <p>This is my second journal entry. I can add whatever I want here — stories, thoughts, photos, etc.</p>
+  </div>
+  
+  <div class="tab-content">
+    <h2>Entry 3</h2>
+    <p>Another day, another memory. One day this diary will be full of pages.</p>
+  </div>
+  
+  <!-- Sounds -->
+  <audio id="flip1" src="page-flip.mp3"></audio>
+  <audio id="flip2" src="typewriter.mp3"></audio>
+  <audio id="flip3" src="chime.mp3"></audio>
+  
+  <script>
+    function openTab(n, soundId) {
+      let contents = document.querySelectorAll(".tab-content");
+      contents.forEach(c => c.classList.remove("active"));
+      contents[n].classList.add("active");
+      
+      // Play sound
+      let sound = document.getElementById(soundId);
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play();
+      }
+    }
+  </script>
+</body>
+</html>
